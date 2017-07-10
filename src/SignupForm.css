@@ -1,0 +1,10 @@
+.SignupForm {
+  text-align: center;
+}
+
+.SignupForm-header {
+  background-color: #222;
+  height: 250px;
+  padding: 20px;
+  color: white;
+}
