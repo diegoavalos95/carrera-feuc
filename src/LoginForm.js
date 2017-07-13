@@ -34,9 +34,9 @@ class LoginForm extends Component {
       <div className="LoginForm">
         <div className="LoginForm-header">
           <h2>Login</h2>
-          <input type="text" value={this.state.username} onChange={(event) => {this.setState({username: event.target.value})}} />
+          <input type="text" placeholder="Usuario" value={this.state.username} onChange={(event) => {this.setState({username: event.target.value})}} />
           <br />
-          <input type="password" value={this.state.password} onChange={(event) => {this.setState({password: event.target.value})}} />
+          <input type="password" placeholder="Contraseña" value={this.state.password} onChange={(event) => {this.setState({password: event.target.value})}} />
           <br />
           <button type="button" onClick={() => this.validateFields()}>Iniciar Sesión</button>
         </div>
