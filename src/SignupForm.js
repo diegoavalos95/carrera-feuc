@@ -24,6 +24,11 @@ class SignupForm extends Component {
   }
 
   validar() {
+    this.validateFields();
+    this.validateEmail();
+  }
+
+  validateEmail() {
     const email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const emailOk = email.exec(this.state.email);
     
@@ -32,9 +37,41 @@ class SignupForm extends Component {
       console.log('Yay');
     }
     else {
-      this.setState({errors: {...this.state.errors, email: true}}, () => {console.log(this.state.errors.email)});
+      this.setState({errors: {...this.state.errors, email: true}}, () => {alert('El formato del correo es incorrecto.')});
       console.log('Nay');
     }
+  }
+
+  validateFields() {
+    if(this.state.name === '')
+      this.setState({errors: {...this.state.errors, name: true}}, () => {alert('El campo de nombre no puede quedar vacío.')});
+    else
+      this.setState({errors: {...this.state.errors, name: false}});
+
+    if(this.state.lastName === '')
+      this.setState({errors: {...this.state.errors, lastName: true}}, () => {alert('El campo de apellido no puede quedar vacío.')});
+    else
+      this.setState({errors: {...this.state.errors, lastName: false}});
+
+    if(this.state.username === '')
+      this.setState({errors: {...this.state.errors, username: true}}, () => {alert('El campo de usuario no puede quedar vacío.')});
+    else
+      this.setState({errors: {...this.state.errors, username: false}});
+
+    if(this.state.email === '')
+      this.setState({errors: {...this.state.errors, email: true}}, () => {alert('El campo de email no puede quedar vacío.')});
+    else 
+      this.setState({errors: {...this.state.errors, email: false}});
+
+    if(this.state.password === '')
+      this.setState({errors: {...this.state.errors, password: true}}, () => {alert('El campo de contraseña no puede quedar vacío.')});
+    else
+      this.setState({errors: {...this.state.errors, password: false}});
+
+    if(this.state.confirmPassword === '')
+      this.setState({errors: {...this.state.errors, confirmPassword: true}}, () => {alert('El campo de confirmar contraseña no puede quedar vacío')});
+    else
+      this.setState({errors: {...this.state.errors, confirmPassword: false}});
   }
 
   render() {

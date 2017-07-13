@@ -15,12 +15,18 @@ class LoginForm extends Component {
     }
   }
 
-  validar() {
-  	if(this.state.username === '')
-  	  this.setState({errors: {...this.state.errors, username: true}}, () => {alert('El campo de usuario no puede estar vacío.')});
+  validateFields() {
+  	if(this.state.username === '') {
+  	  this.setState({errors: {...this.state.errors, username: true}}, () => {alert('El campo de usuario no puede quedar vacío.')});
+  	} else {
+  	  this.setState({errors: {...this.state.errors, username: false}});
+  	}
 
-  	if(this.state.password === '')
-  	  this.setState({errors: {...this.state.errors, password: true}}, () => {alert('La campo de contraseña no puede estar vacío.')});
+  	if(this.state.password === '') {
+  	  this.setState({errors: {...this.state.errors, password: true}}, () => {alert('El campo de contraseña no puede quedar vacío.')});
+  	} else {
+  	  this.setState({errors: {...this.state.errors, password: false}});
+  	}
   }
 
   render() {
@@ -32,7 +38,7 @@ class LoginForm extends Component {
           <br />
           <input type="password" value={this.state.password} onChange={(event) => {this.setState({password: event.target.value})}} />
           <br />
-          <button type="button" onClick={() => this.validar()}>Iniciar Sesión</button>
+          <button type="button" onClick={() => this.validateFields()}>Iniciar Sesión</button>
         </div>
       </div>
     );
