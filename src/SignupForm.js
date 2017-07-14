@@ -23,7 +23,7 @@ class SignupForm extends Component {
     }
   }
 
-  validar() {
+  validate() {
     if(this.validateFields()) {
       this.validateEmail();
       this.validatePasswords();
@@ -120,7 +120,7 @@ class SignupForm extends Component {
           <br />
           <input type="password" placeholder="Repetir contraseña" value={this.state.confirmPassword} onChange={(event) => {this.setState({confirmPassword: event.target.value})}} />
           <br />
-          <button type="button" onClick={() => this.validar()} >Registrarse</button>
+          <button type="button" onClick={() => this.validate()} >Registrarse</button>
         </div>
       </div>
     );
