@@ -26,7 +26,10 @@ class SignupForm extends Component {
   validate() {
     if(this.validateFields()) {
       this.validateEmail();
-      this.validatePasswords();
+      if(this.validatePassword())
+        this.validatePasswords();
+      else
+        alert('La contraseña debe contener al menos 8 caracteres, 1 mayúscula y 1 número.');
     }
     else {
       alert('Ningún campo puede quedar vacío.');
@@ -45,6 +48,27 @@ class SignupForm extends Component {
       this.setState({errors: {...this.state.errors, email: true}}, () => {alert('El formato del correo es incorrecto.')});
       console.log('Nay');
     }
+  }
+
+  validatePassword() {
+    const password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    const passwordOk = password.exec(this.state.password);
+    let errors = 0;
+
+    if(passwordOk) {
+      this.setState({errors: {...this.state.errors, password: false}}, () => {console.log(this.state.errors.password)});
+      console.log('Yay');
+    }
+    else {
+      this.setState({errors: {...this.state.errors, password: true}});
+      console.log('Nay');
+      errors++;
+    }
+
+    if(errors != 0)
+      return false;
+    else
+      return true;
   }
 
   validatePasswords() {
