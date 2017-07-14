@@ -53,22 +53,17 @@ class SignupForm extends Component {
   validatePassword() {
     const password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     const passwordOk = password.exec(this.state.password);
-    let errors = 0;
 
     if(passwordOk) {
       this.setState({errors: {...this.state.errors, password: false}}, () => {console.log(this.state.errors.password)});
       console.log('Yay');
+      return true;
     }
     else {
       this.setState({errors: {...this.state.errors, password: true}});
       console.log('Nay');
-      errors++;
-    }
-
-    if(errors != 0)
       return false;
-    else
-      return true;
+    }
   }
 
   validatePasswords() {
